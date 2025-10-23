@@ -1,0 +1,10 @@
+services:
+  - name: http-server
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 3001
+    nodePort: 30036
+    secretRef: http-server-sealed-secret
+    dockersecretRef: docker-sealed-secret

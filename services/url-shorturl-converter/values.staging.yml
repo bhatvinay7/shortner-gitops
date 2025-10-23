@@ -1,0 +1,10 @@
+services:
+  - name: url-converter
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 3011
+    nodePort: 30037
+    secretRef: url-converter-sealed-secret
+    dockersecretRef: docker-sealed-secret

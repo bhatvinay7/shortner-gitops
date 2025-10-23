@@ -1,0 +1,10 @@
+services:
+  - name: url-web
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 3000
+    nodePort: 30139
+    secretRef: url-web-sealed-secret
+    dockersecretRef: docker-sealed-secret

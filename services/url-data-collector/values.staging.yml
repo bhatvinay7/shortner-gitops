@@ -1,0 +1,10 @@
+services:
+  - name: data-collector
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 3012
+    nodePort: 30035
+    secretRef: data-collecter-sealed-secret
+    dockersecretRef: docker-sealed-secret

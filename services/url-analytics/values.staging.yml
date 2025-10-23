@@ -1,0 +1,10 @@
+services:
+  - name: url-analytics
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 3006
+    nodePort: 3038
+    secretRef: urlshortner-analytics-sealed-secret
+    dockersecretRef: docker-sealed-secret

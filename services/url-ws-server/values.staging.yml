@@ -1,0 +1,10 @@
+services:
+  - name: url-ws-server
+    namespace: shortner
+    replicas: 1
+    image: ""
+    port: 80
+    targetPort: 8080
+    nodePort: 30140
+    secretRef: ws-server-sealed-secret
+    dockersecretRef: docker-sealed-secret
