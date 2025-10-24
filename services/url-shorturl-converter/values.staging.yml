@@ -2,7 +2,7 @@ services:
   - name: url-converter
     namespace: shortner
     replicas: 1
-    image: bhatvinay7/url-shorturl-converter:51ad780a6ce492def246f5e4517a9cf89e6be12d
+    image: bhatvinay7/url-shorturl-converter:f95ebb3d5ab7f40b5d20812ee499ce2edcd3a375
     port: 80
     targetPort: 3011
     nodePort: 30037
