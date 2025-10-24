@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-queues
-  namespace: rabbitmq
+  namespace: shortner
 spec:
   template:
     spec:

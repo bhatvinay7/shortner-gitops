@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq-ui
-  namespace: rabbitmq
+  namespace: shortner
 spec:
   type: NodePort
   ports:
