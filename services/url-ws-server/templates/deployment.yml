@@ -22,11 +22,11 @@ spec:
           ports:
             - containerPort: {{ $svc.targetPort }}
           volumeMounts:
-            - name: env-volume
+            - name: combined_env
               mountPath: /app/.env
               subPath: .env
       volumes:
-        - name: env-volume
+        - name: combined_env
           secret:
             secretName: {{$svc.secretRef}}
 
