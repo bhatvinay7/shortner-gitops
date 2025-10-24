@@ -2,7 +2,7 @@ services:
   - name: data-collector
     namespace: shortner
     replicas: 1
-    image: ""
+    image: bhatvinay7/url-data-collector:51ad780a6ce492def246f5e4517a9cf89e6be12d
     port: 80
     targetPort: 3012
     nodePort: 30035
