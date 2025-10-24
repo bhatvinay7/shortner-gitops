@@ -11,41 +11,51 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - host: feedback-api.chatt.services
+  - host: api.shortner.services
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: backend
+            name: http-server
             port:
               number: 8000
 
-  - host: feedback-web.chatt.services
+  - host: web.shortner.services
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: reach-frontend
+            name: url-web
             port:
               number: 3000
 
-  - host: feedback-web.chatt.services
+  - host: ws-server.shortner.services
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: reach-ws-server
+            name: url-ws-server
             port:
               number: 8080
+  - host: analytics.shortner.services
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: url-analytics
+            port:
+              number: 3006           
 
  
   tls :
     - hosts:
-        - chatt.services
-      secretName : feedback-secret
+        - shortner.services
+      secretName : shortner-secret

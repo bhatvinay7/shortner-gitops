@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-queues
+  namespace: rabbitmq
+spec:
+  template:
+    spec:
+      containers:
+      - name: rabbitmq-tools
+        image: rabbitmq:3-management
+        env:
+          - name: RABBITMQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: sealed-rabbitmq-auth
+                key: username
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sealed-rabbitmq-auth
+                key: password
+        command: ["/bin/sh", "-c"]
+        args:
+         - |
+           "rabbitmqadmin -u $RABBITMQ_USER -p $RABBITMQ_PASSWORD -H rabbitmq.rabbitmq.svc.cluster.local  -P 15672 declare queue name="data-collector-queue" exchange name="user-metrics" type=topic durable=true"
+           "rabbitmqadmin -u $RABBITMQ_USER -p $RABBITMQ_PASSWORD -H rabbitmq.rabbitmq.svc.cluster.local -P 15672 declare queue name="push-url-queue"  exchange name="url-metrics"    type=topic durable=true" 
+      restartPolicy: OnFailure
