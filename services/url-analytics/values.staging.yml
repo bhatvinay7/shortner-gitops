@@ -2,7 +2,7 @@ services:
   - name: url-analytics
     namespace: shortner
     replicas: 1
-    image: ""
+    image: bhatvinay7/url-analytics:51ad780a6ce492def246f5e4517a9cf89e6be12d
     port: 80
     targetPort: 3006
     nodePort: 3038
