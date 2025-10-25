@@ -8,21 +8,21 @@ resources:
 patches:
   - target:
       kind: Deployment
-      name: rabbitmq-cluster-operator
+      name: nginx-ingress-controller
     patch: |-
       - op: add
         path: /metadata/annotations/argocd.argoproj.io~1sync-wave
         value: "0"
   - target:
       kind: Ingress
-      name: rabbitmq
+      name: Ingress-config
     patch: |-
       - op: add
         path: /metadata/annotations/argocd.argoproj.io~1sync-wave
         value: "1"
   - target:
       kind: ClusterIssuer
-      name: create-queues
+      name: CertManager
     patch: |-
       - op: add
         path: /metadata/annotations/argocd.argoproj.io~1sync-wave
