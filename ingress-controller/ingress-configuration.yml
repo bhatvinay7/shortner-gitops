@@ -52,9 +52,18 @@ spec:
           service:
             name: url-analytics
             port:
-              number: 3006           
-
- 
+              number: 3006
+              
+  - host: argocd.shortner.services
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 443                     
   tls :
     - hosts:
         - shortner.services
