@@ -3,6 +3,8 @@ kind: ClusterIssuer
 metadata:
   name: CertManager
   namespace: shortner
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory

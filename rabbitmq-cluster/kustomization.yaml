@@ -1,6 +1,35 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
 resources:
+  - operator.yaml
   - rabbitMqCluster.yaml
   - job.yaml
-  - services.yaml
+  - service.yaml
+
+patches:
+  - target:
+      kind: Deployment
+      name: rabbitmq-cluster-operator
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+        value: "0"
+  - target:
+      kind: RabbitmqCluster
+      name: rabbitmq
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+        value: "1"
+  - target:
+      kind: Job
+      name: create-queues
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+        value: "2"      
+  - target:
+      kind: Service
+      name: rabbitmq-service
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+        value: "3"

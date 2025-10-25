@@ -3,6 +3,8 @@ kind: Job
 metadata:
   name: create-queues
   namespace: shortner
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   template:
     spec:
